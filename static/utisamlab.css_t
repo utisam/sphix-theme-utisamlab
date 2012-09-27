@@ -1,0 +1,251 @@
+/* main(haiku like) */
+
+#main h1 {
+	font-size: 40pt;
+	font-weight: bold;
+	color: {{ theme_headingcolor }};
+	border-bottom: dashed thick #e0e0e0;
+	margin-top: 30px;
+}
+
+#main h2 {
+	font-size: 24pt;
+	font-weight: bold;
+	color: {{ theme_headingcolor }};
+	border-bottom: dotted medium #e0e0e0;
+	margin-top: 30px;
+}
+
+#main h3 {
+	font-size: 20pt;
+	font-weight: bold;
+	color: {{ theme_headingcolor }};
+	margin-top: 30px;
+}
+
+#main h4 {
+	font-size: 16pt;
+	font-weight: normal;
+	color: {{ theme_headingcolor }};
+	margin-top: 30px;
+}
+
+#main h1 a:link,
+#main a:visited {
+	text-decoration: none;
+	color: {{ theme_headingcolor }};
+}
+
+#main h2 a:link,
+#main a:visited {
+	text-decoration: none;
+	color: {{ theme_headingcolor }};
+}
+
+#main h3 a:link,
+#main a:visited {
+	text-decoration: none;
+	color: {{ theme_headingcolor }};
+}
+
+#main h4 a:link,
+#main a:visited {
+	text-decoration: none;
+	color: {{ theme_headingcolor }};
+}
+
+div.topic {
+	border: 1px solid rgb(204, 204, 204);
+	padding: 7px 7px 0px;
+	margin: 10px 0px;
+}
+div.admonition {
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-style: dotted;
+	border-width: thin;
+	border-color: #dcdcdc;
+	padding: 10px 15px 10px 15px;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+div.note {
+	padding: 10px 15px 10px 80px;
+	background: #e4ffde url(alert_info_32.png) 15px 15px no-repeat;
+	min-height: 42px;
+}
+div.warning {
+	padding: 10px 15px 10px 80px;
+	background: #fffbc6 url(alert_warning_32.png) 15px 15px no-repeat;
+	min-height: 42px;
+}
+div.seealso {
+	background: #e4ffde;
+}
+
+a.headerlink {
+	color: #a7ce38;
+	padding-left: 5px;
+}
+
+a.headerlink:hover {
+	color: #a7ce38;
+}
+
+#main dl {
+	padding-left: 16px;
+	margin-top: 3px;
+}
+
+#main dl dt {
+	font-weight: bold;
+	font-size: 1.1em;
+	margin: 8px 0px;
+}
+
+#main ul > li {
+	-moz-background-clip:border;
+	-moz-background-inline-policy:continuous;
+	-moz-background-origin:padding;
+	background: transparent url(bullet_orange.png) no-repeat scroll left 0.45em;
+	list-style-image: none;
+	list-style-type: none;
+	padding: 0 0 0 1.0em;
+	margin: 0 2px;
+}
+
+/* contents box */
+
+#main table.index {
+	margin: 0px 0px 30px 30px;
+	padding: 1px;
+	border-width: 1px;
+	border-style: dotted;
+	border-color: #e0e0e0;
+}
+
+#main table.index tr.heading {
+	background-color: #e0e0e0;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+#main table.index tr.index {
+	background-color: #eeeeee;
+}
+
+#main table.index td {
+	padding: 5px 20px;
+}
+
+#main table.index a:link,
+#main table.index a:visited {
+	font-weight: normal;
+	text-decoration: none;
+	color: {{ theme_linkcolor }};
+}
+
+#main table.index a:hover,
+#main table.index a:active {
+	text-decoration: underline;
+	color: {{ theme_hoverlinkcolor }};
+}
+
+#main td {
+	vertical-align: top;
+}
+
+#main tt {
+	background-color: #e2e2e2;
+	font-size: 1.0em;
+	font-family: monospace;
+}
+
+pre {
+	border-color: #0c3762;
+	border-style: dotted;
+	border-width: thin;
+	margin: 0 0 12px 0;
+	padding: 0.8em;
+	background-color: #f0f0f0;
+}
+
+hr {
+	border-top: 1px solid #ccc;
+	border-bottom: 0;
+	border-right: 0;
+	border-left: 0;
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+
+.viewcode-back {
+	font-family: "DejaVu Sans", Arial, Helvetica, sans-serif;
+}
+
+div.viewcode-block:target {
+	background-color: #f4debf;
+	border-top: 1px solid #ac9;
+	border-bottom: 1px solid #ac9;
+	margin: -1px -12px;
+	padding: 0 12px;
+}
+
+div.figure {
+	margin-left: 32px;
+}
+
+em {
+	font-weight: bold;
+	font-style: normal;
+}
+
+/* color */
+#header {
+	background: -moz-linear-gradient(left, #006567, #001);
+	background: -webkit-linear-gradient(left, #006567, #001);
+	background: -o-linear-gradient(left, #006567, #001);
+	background: linear-gradient(left, #006567, #001);
+	box-shadow: inset -2px -2px 16px #000;
+}
+#header h1 a,
+#header h1 a:link,
+#header h1 a:hover,
+#header h1 a:visited,
+#header h1 a:active,
+.tagline {
+	color: #758c9e;
+}
+#header h2 {
+	color: #fff;
+}
+#header nav a:link, #header nav a:visited {
+	color: #00a5a8;
+}
+#header nav a:active, #header nav a:hover {
+	color: #00c5c8;
+}
+
+body, #main-wrapper {
+	background-color: #c6ab7d;
+}
+#main-wrapper header,
+#main-wrapper header a,
+#main-wrapper header a:link,
+#main-wrapper header a:visited,
+#main-wrapper header a:hover,
+#main-wrapper header a:active,
+#main-wrapper footer,
+#main-wrapper footer a,
+#main-wrapper footer a:link,
+#main-wrapper footer a:visited,
+#main-wrapper footer a:active {
+	color: #fff;
+}
+#main {
+	background-color: #fff;
+}
+

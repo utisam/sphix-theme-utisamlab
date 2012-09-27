@@ -1,0 +1,160 @@
+{#
+    utisamlab/layout.html
+    ~~~~~~~~~~~~~~~~~
+
+    :copyright: Copyright 2012 by Masatoshi Tsushima.
+    :license: BSD, see LICENSE for details.
+#}
+{% set url_root = pathto('', 1) %}
+{# XXX necessary? #}
+{% if url_root == '#' %}{% set url_root = '' %}{% endif %}
+{% if not embedded and docstitle %}
+  {% set titlesuffix = " &mdash; "|safe + docstitle|e %}
+{% else %}
+  {% set titlesuffix = "" %}
+{% endif %}
+
+{% macro script() %}
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '{{ url_root }}',
+        VERSION:     '{{ release|e }}',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '{{ '' if no_search_suffix else file_suffix }}',
+        HAS_SOURCE:  {{ has_source|lower }}
+      };
+    </script>
+    {% for scriptfile in script_files %}
+    <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
+    {% endfor %}
+{% endmacro %}
+
+{% macro css() %}
+    <link rel="stylesheet" href="{{ pathto('_static/normalize.css', 1) }}" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto('_static/base-style.css', 1) }}" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
+    {% for cssfile in css_files %}
+    <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
+    {% endfor %}
+{% endmacro %}
+
+{% macro nav() %}
+      <nav>
+        {% block haikurel1 %}
+        {% endblock %}
+        {% if prev %}
+        «&#160;&#160;<a href="{{ prev.link|e }}">{{ prev.title }}</a>
+        &#160;&#160;::&#160;&#160;
+        {% endif %}
+        <a class="uplink" href="{{ pathto(master_doc) }}">{{ _('Note Top') }}</a>
+        {% if next %}
+        &#160;&#160;::&#160;&#160;
+        <a href="{{ next.link|e }}">{{ next.title }}</a>&#160;&#160;»
+        {% endif %}
+        {% block haikurel2 %}
+        {% endblock %}
+      </nav>
+{% endmacro %}
+
+{% block doctype -%}
+<!DOCTYPE html>
+{% endblock %}
+<html lang="ja">
+  <head>
+    <meta charset="{{ encoding }}">
+    {{ metatags }}
+    {% block htmltitle %}
+    <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+    {% endblock %}
+    {{ css() }}
+    {% if not embedded %}
+    {{ script() }}
+    {% if use_opensearch %}
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="{% trans docstitle=docstitle|e %}Search within {{ docstitle }}{% endtrans %}"
+          href="{{ pathto('_static/opensearch.xml', 1) }}"/>
+    {% endif %}
+    {% if favicon %}
+    <link rel="shortcut icon" href="{{ pathto('_static/' + favicon, 1) }}"/>
+    {% endif %}
+    {% endif %}
+{% block linktags %}
+    {% if hasdoc('about') %}
+    <link rel="author" title="{{ _('About these documents') }}" href="{{ pathto('about') }}" />
+    {% endif %}
+    {% if hasdoc('genindex') %}
+    <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
+    {% endif %}
+    {% if hasdoc('search') %}
+    <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
+    {% endif %}
+    {% if hasdoc('copyright') %}
+    <link rel="copyright" title="{{ _('Copyright') }}" href="{{ pathto('copyright') }}" />
+    {% endif %}
+    <link rel="top" title="{{ docstitle|e }}" href="{{ pathto('index') }}" />
+    {% if parents %}
+    <link rel="up" title="{{ parents[-1].title|striptags|e }}" href="{{ parents[-1].link|e }}" />
+    {% endif %}
+    {% if next %}
+    <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
+    {% endif %}
+    {% if prev %}
+    <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
+    {% endif %}
+{% endblock %}
+{% block extrahead %} {% endblock %}
+  </head>
+  <body>
+    <div id="top-container">
+      <header id="header">
+        <hgroup>
+          <h2>Table of Contents</h2>
+        </hgroup>
+        <nav>
+          {% block navigation %}
+          {{ toctree(maxdepth=1) }}
+          {% endblock %}
+        </nav>
+        <div>
+          {%- block sidebarsearch %}
+          <h2>{{ _('Search') }}</h2>
+          <form class="search" action="{{ pathto('search') }}" method="get">
+            <input type="text" name="q" />
+            <input type="submit" value="{{ _('Go') }}" />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+          </form>
+          {%- endblock %}
+        </div>
+      </header>
+      {% block content %}
+      <div id="main-wrapper">
+        {% block header %}
+        <header>
+          <nav class="topnav">
+          {{ nav() }}
+          </nav>
+          <h1><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a></h1>
+        </header>
+        {% endblock %}
+        <section id="main">
+          {% block body %}{% endblock %}
+        </section>
+        {% block footer %}
+        <footer id="footer">
+          <nav class="bottomnav">
+          {{ nav() }}
+          </nav>
+          {% if show_copyright %}
+          {% trans copyright=copyright|e %}Copyright &copy; {{ copyright }}.{% endtrans %}
+          {% endif %}
+          {% if show_sphinx %}
+          {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
+          {% endif %}
+        </footer>
+        {% endblock %}
+      </div>
+      {% endblock %}
+  </body>
+</html>

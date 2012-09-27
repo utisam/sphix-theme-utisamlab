@@ -1,0 +1,129 @@
+html {
+	overflow-y:scroll;
+}
+html, body {
+	margin: 0;
+	padding: 0;
+}
+h1 a:link, h1 a:hover, h1 a:visited, h1 a:active {
+	text-decoration: none;
+}
+
+#header {
+	padding: 0px;
+	margin: 0px;
+}
+#header h2 {
+	font-size: 20pt;
+	font-weight: 200;
+	margin: 0px;
+	padding: 8px;
+}
+#header nav,
+#header nav ul {
+	margin: 0;
+	padding: 0;
+}
+#header nav li {
+	font-size: 12pt;
+	list-style: none;
+}
+#footer {
+	width: 100%;
+	padding: 4px 0px;
+	font-size: 10pt;
+}
+@media screen and (max-width: 899px) {
+	#header {
+		padding: 0px;
+	}
+	#header hgroup .tagline {
+		padding-left: 32px;
+	}
+	#header nav li {
+		margin: 0px;
+		padding: 8px 0px;
+		width: 24.5%;
+		display: inline-block;
+		text-align: center;
+	}
+	#footer {
+		text-align: center;
+	}
+}
+@media screen and (max-width: 480px) {
+	#header nav li {
+		width: 49.5%;
+	}
+}
+@media screen and (max-width: 360px) {
+	#header nav li {
+		display: block;
+		width: 100%;
+	}
+}
+@media screen and (min-width: 900px) {
+	#top-container {
+		overflow: hidden !important;
+		overflow: visible;
+		min-height: 100%;
+		height: auto !important;
+		height: 100%;
+	}
+	#top-container #header {
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		padding-top: 80px;
+		min-width: 180px;
+		width: 20%;
+		height: 100%;
+	}
+	#header>* {
+		margin-right: 8px;
+		text-align: right;
+		width: 100%;
+	}
+	#header input[type="text"] {
+		width: 60%;
+	}
+	#header hgroup {
+		margin-bottom: 16px;
+	}
+	#header nav li {
+		border-bottom: 1px solid #eee;
+		margin: 4px 4px 4px 25%;
+		padding: 8px;
+	}
+	#main-wrapper {
+		width: 80%;
+		position: absolute;
+		left: 20%;
+		top: 0px;
+	}
+	.topnav {
+		margin-bottom: -0.5em;
+	}
+}
+.topnav, .bottomnav {
+	padding-top: 8px;
+	margin-right: 32px;
+	text-align: right;
+	font-size: 10pt;
+}
+#main-wrapper header h1 {
+	font-size: 32pt;
+	font-weight: lighter;
+	padding: 0;
+	margin: 0;
+}
+@media screen and (max-width: 799px) {
+	#main {
+		padding: 32px 10%;
+	}
+}
+@media screen and (min-width: 800px) {
+	#main {
+		padding: 32px 80px;
+	}
+}
